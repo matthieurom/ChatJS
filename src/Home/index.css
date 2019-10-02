@@ -1,0 +1,17 @@
+button {
+  font-weight: bold;
+}
+.HomeButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(42, 25, 42, 0.15);
+}
+.HomeButtons button {
+  height: 50px;
+  width: 70px;
+}
+.HomeButtons .HomeButtonCreate {
+  width: 120px;
+}

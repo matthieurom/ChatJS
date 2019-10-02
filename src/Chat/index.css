@@ -1,0 +1,78 @@
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+li {
+  list-style-type: none;
+}
+button:hover {
+  opacity: 0.8;
+}
+.ChatItem {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(42, 25, 42, 0.15);
+}
+.ChatItem li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  border: 1px solid #2a192a;
+  border-radius: 10px;
+  margin: 0px 0px 10px 0px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px -6px rgba(0, 0, 0, 0.66);
+}
+.ChatItem li button {
+  width: 80px;
+  height: 30px;
+  transition: width 0.2s ease-out, height 0.2s ease-out;
+}
+.ChatItem li:hover button {
+  width: 90px;
+  height: 40px;
+}
+.ChatItem .listChatMain .listChatName {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.ChatMainMessages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ChatItem .listChatMain .listChatDescription {
+  font-size: 0.9em;
+}
+.ChatMain .ChatMessages {
+  background-color: white;
+  border: 3px solid #2a192a;
+  border-radius: 10px;
+  height: 500px;
+  overflow-y: scroll;
+  padding: 5px 10px 5px 10px;
+}
+.ChatMain form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.ChatMain form input {
+  flex-grow: 1;
+  margin-right: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px -6px rgba(0, 0, 0, 0.66);
+  border: 1px solid #2a192a;
+  padding: 5px 10px 5px 10px;
+}
+.ChatMain form input:focus {
+  outline: none;
+}
+
+.ChatMain .back {
+  align-self: center;
+  margin-top: 30px;
+}

@@ -1,0 +1,67 @@
+.LoginMain {
+  width: 100%;
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-content {
+  border: 1px solid #adadad;
+  border-radius: 5px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 10px -6px rgba(0, 0, 0, 0.66);
+}
+.form-content form {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-content h1 {
+  font-size: 1.3em;
+}
+.form-content h2 {
+  font-size: 1.5em;
+  margin-bottom: 0px;
+}
+.form-content form input {
+  width: 300px;
+  height: 25px;
+  margin: 20px 0px 15px 0px;
+  border: 0.8px solid #bcbcbc;
+  border-radius: 5px;
+  padding: 3px;
+}
+.form-content form input:focus {
+  outline: none;
+  border: 1.5px solid #2a192a;
+  border-radius: 5px;
+}
+.form-content-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+.form-content-button button {
+  width: 80px;
+}
+.form-content-button a {
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #2a192a;
+}
+.form-content-button a:hover {
+  opacity: 0.6;
+}
+.incorrect-password {
+  color: red;
+  font-size: 0.8em;
+  font-weight: bold;
+}
