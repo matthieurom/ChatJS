@@ -1,43 +1,73 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Message from "../Message/index";
+import { getMessagesFromChat } from "../services/getMessagesFromChat";
+import { getChatInfosFromParams } from "../services/getChatInfosFromParams";
 import "./index.css";
 
 class Chat extends React.Component {
   state = {
     chat: [],
-    messages: []
+    messages: [],
+    users: null
   };
   async componentWillMount() {
-    // Get chat infos
-    const chatReponse = await axios.get(
-      `http://localhost:8080/chat/${this.props.match.params.id}`
+    let chatInfos = await getChatInfosFromParams(this.props.match.params.id);
+    let messagesFromChat = await getMessagesFromChat(
+      this.props.match.params.id
     );
     this.setState({
-      chat: chatReponse.data
+      chat: chatInfos,
+      messages: messagesFromChat
     });
-
-    // Get messages from chat
-    const messagesResponse = await axios.get(
-      `http://localhost:8080/messages/${this.props.match.params.id}`,
-      { headers: { Authorization: localStorage.getItem("token") } }
-    );
-    this.setState({
-      messages: messagesResponse.data
-    });
+    this.getUsersFromMessages(this.state.messages);
   }
 
+  getUsersFromMessages = messages => {
+    messages.map(async message => {
+      const responseUser = await axios.get(
+        `http://localhost:8080/user/${message.user}`
+      );
+
+      if (
+        !this.state.users ||
+        !this.state.users.find(user => user._id === message.user)
+      ) {
+        if (!this.state.users) {
+          this.setState({
+            users: [responseUser.data]
+          });
+        } else {
+          this.setState(prevState => ({
+            users: prevState.users.concat(responseUser.data)
+          }));
+        }
+      }
+    });
+  };
   handleSubmitMessage = e => {
     e.preventDefault();
   };
+
+  displayMessage = message => {
+    let user = this.state.users.find(user => user._id === message.user);
+    if (user) {
+      return (
+        <li>
+          {user.login} : {message.text}
+        </li>
+      );
+    }
+  };
   render() {
+    let messagesToDisplay;
+    if (this.state.users) {
+      messagesToDisplay = this.state.messages.map(this.displayMessage);
+    }
     return (
       <div className="ChatMainMessages">
         <h1>Connected to {this.state.chat.name}</h1>
-        <div className="ChatMessages">
-          <Message messages={this.state.messages} />
-        </div>
+        <div className="ChatMessages">{messagesToDisplay}</div>
         <form onSubmit={e => this.handleSubmitMessage(e)}>
           <input placeholder="Write down your message" />
           <button type="submit">Send</button>
