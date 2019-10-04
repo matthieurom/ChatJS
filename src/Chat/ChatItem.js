@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./index.css";
@@ -17,7 +16,7 @@ class ChatItem extends React.Component {
 
   listChat = chat => {
     return (
-      <li>
+      <li key={chat._id}>
         <div className="listChatMain">
           <div className="listChatName">{chat.name}</div>
           <div className="listChatDescription">{chat.description}</div>
@@ -32,7 +31,6 @@ class ChatItem extends React.Component {
   };
   render() {
     let chatItems = this.state.chats.map(this.listChat);
-    console.log(chatItems);
     return (
       <ul>
         <div className="ChatItem">{chatItems}</div>
@@ -41,8 +39,4 @@ class ChatItem extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state;
-};
-
-export default connect(mapStateToProps)(ChatItem);
+export default ChatItem;

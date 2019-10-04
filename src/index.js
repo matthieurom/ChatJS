@@ -5,10 +5,10 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import chatReducer from "./reducers/chatReducer";
+import userReducer from "./reducers/userReducer";
 
 const store = createStore(
-  chatReducer,
+  userReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

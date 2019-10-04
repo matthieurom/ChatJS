@@ -47,7 +47,7 @@ button:hover {
 .ChatItem .listChatMain .listChatDescription {
   font-size: 0.9em;
 }
-.ChatMain .ChatMessages {
+.ChatMainMessages .ChatMessages {
   background-color: white;
   border: 3px solid #2a192a;
   border-radius: 10px;
@@ -55,12 +55,12 @@ button:hover {
   overflow-y: scroll;
   padding: 5px 10px 5px 10px;
 }
-.ChatMain form {
+.ChatMainMessages form {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
 }
-.ChatMain form input {
+.ChatMainMessages form input {
   flex-grow: 1;
   margin-right: 10px;
   border-radius: 10px;
@@ -68,11 +68,11 @@ button:hover {
   border: 1px solid #2a192a;
   padding: 5px 10px 5px 10px;
 }
-.ChatMain form input:focus {
+.ChatMainMessages form input:focus {
   outline: none;
 }
 
-.ChatMain .back {
+.ChatMainMessages .back {
   align-self: center;
   margin-top: 30px;
 }

@@ -1,3 +1,13 @@
+.HomeMain {
+  width: 100%;
+}
+.HomeMain h1,
+h2 {
+  text-align: center;
+}
+.HomeMain h2 {
+  font-size: 1.2em;
+}
 button {
   font-weight: bold;
 }
