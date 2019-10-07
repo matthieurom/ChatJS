@@ -5,6 +5,7 @@ import { getMessagesFromChat } from "../services/getMessagesFromChat";
 import { getChatInfosFromParams } from "../services/getChatInfosFromParams";
 import "./index.css";
 import { connect } from "react-redux";
+import io from "socket.io-client";
 
 class Chat extends React.Component {
   state = {
@@ -14,7 +15,6 @@ class Chat extends React.Component {
     inputMessage: ""
   };
   async componentWillMount() {
-    console.log("COMPONENT WILL MOUNT");
     let chatInfos = await getChatInfosFromParams(this.props.match.params.id);
     let messagesFromChat = await getMessagesFromChat(
       this.props.match.params.id
@@ -24,6 +24,14 @@ class Chat extends React.Component {
       messages: messagesFromChat
     });
     this.getUsersFromMessages(this.state.messages);
+    this.socket = io("localhost:8080");
+
+    this.socket.on("RECEIVE_MESSAGE", async () => {
+      let messagesFromChatWithSocket = await getMessagesFromChat(
+        this.props.match.params.id
+      );
+      this.setState({ messages: messagesFromChatWithSocket });
+    });
   }
 
   getUsersFromMessages = messages => {
@@ -67,6 +75,12 @@ class Chat extends React.Component {
         headers: { Authorization: localStorage.getItem("token") }
       }
     );
+    this.socket.emit("SEND_MESSAGE", {
+      text: this.state.inputMessage,
+      date: Date.now(),
+      chatId: this.props.match.params.id,
+      userId: this.props.user._id
+    });
     this.setState({
       inputMessage: ""
     });
@@ -83,7 +97,6 @@ class Chat extends React.Component {
     }
   };
   render() {
-    console.log("STATE IS :", this.state);
     let messagesToDisplay;
     if (this.state.users) {
       messagesToDisplay = this.state.messages.map(this.displayMessage);

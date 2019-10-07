@@ -1,0 +1,48 @@
+.CreateChatMain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.createchat-content {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  box-shadow: 0px 0px 10px -6px rgba(0, 0, 0, 0.66);
+  border: 1px solid #adadad;
+  border-radius: 5px;
+  padding: 15px;
+}
+.CreateChatMain form {
+  display: flex;
+  flex-direction: column;
+}
+.CreateChatMain input {
+  height: 25px;
+  margin: 15px 0px 15px 0px;
+  border: 0.8px solid #bcbcbc;
+  border-radius: 5px;
+  padding: 3px;
+}
+.CreateChatMain form input:focus {
+  outline: none;
+  border: 1.5px solid #2a192a;
+  border-radius: 5px;
+}
+.CreateChatMain .createchat-button {
+  margin: 20px 0px 5px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.CreateChatMain .createchat-button a {
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #2a192a;
+}
+.CreateChatMain .createchat-button a:hover {
+  opacity: 0.6;
+}
+.CreateChatMain .createchat-button .submitbutton {
+  width: 80px;
+}

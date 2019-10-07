@@ -16,7 +16,7 @@ class Home extends React.Component {
           <Link to="/login">
             <button>Logout</button>
           </Link>
-          <Link to="/">
+          <Link to="/create">
             <button className="HomeButtonCreate">Create a new chat</button>
           </Link>
         </div>

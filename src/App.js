@@ -4,6 +4,7 @@ import "./App.css";
 import Login from "./Login/index";
 import Home from "./Home/index";
 import Chat from "./Chat/index";
+import CreateChat from "./CreateChat/index";
 import { connect } from "react-redux";
 import { getCurrentUser } from "./services/getCurrentUser";
 import { setUser } from "./actions/userActions";
@@ -40,6 +41,7 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/create" component={CreateChat} />
           <Route path="/chat/:id" component={Chat} />
           <Route path="/" component={Home} />
         </Switch>
