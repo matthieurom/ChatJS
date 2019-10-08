@@ -1,7 +1,7 @@
 body {
   padding: 0px;
-  background-color: #f6f7fb;
-  font-family: sans-serif;
+  background-color: #f1f0f5;
+  font-family: Trebuchet MS, sans-serif;
   font-size: 16px;
 }
 
@@ -14,9 +14,9 @@ body {
 }
 button {
   border-radius: 10px;
-  background-color: #2a192a;
+  background-color: #383649;
   color: white;
-  border: 1px solid #2a192a;
+  border: 1px solid #383649;
   cursor: pointer;
   outline: none;
   height: 50px;

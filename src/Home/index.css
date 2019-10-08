@@ -1,10 +1,8 @@
 .HomeMain {
   width: 100%;
+  height: 800px;
 }
-.HomeMain h1,
-h2 {
-  text-align: center;
-}
+
 .HomeMain h2 {
   font-size: 1.2em;
 }
@@ -14,9 +12,7 @@ button {
 .HomeButtons {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
   padding-top: 30px;
-  border-top: 1px solid rgba(42, 25, 42, 0.15);
 }
 .HomeButtons button {
   height: 50px;
@@ -24,4 +20,23 @@ button {
 }
 .HomeButtons .HomeButtonCreate {
   width: 120px;
+}
+.HomeMain {
+  margin-top: 5%;
+  height: 680px;
+}
+.HomeMain .ChatWrapper {
+  display: flex;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
+}
+.HomeMain .ListChat {
+  height: 600px;
+  background-color: #3d3b50;
+  color: #f1f0f5;
+  flex: 1;
+  overflow-y: scroll;
+}
+.HomeMain .ChatFrame {
+  height: 600px;
+  flex: 1.5;
 }

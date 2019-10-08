@@ -39,7 +39,7 @@
 }
 .form-content form input:focus {
   outline: none;
-  border: 1.5px solid #2a192a;
+  border: 1.5px solid #383649;
   border-radius: 5px;
 }
 .form-content-button {
@@ -55,7 +55,7 @@
 .form-content-button a {
   text-decoration: none;
   font-size: 0.9em;
-  color: #2a192a;
+  color: #383649;
 }
 .form-content-button a:hover {
   opacity: 0.6;

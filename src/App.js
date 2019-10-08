@@ -7,7 +7,7 @@ import Chat from "./Chat/index";
 import CreateChat from "./CreateChat/index";
 import { connect } from "react-redux";
 import { getCurrentUser } from "./services/getCurrentUser";
-import { setUser } from "./actions/userActions";
+import { setCurrentUser } from "./actions/userActions";
 
 class App extends React.Component {
   state = {
@@ -18,7 +18,7 @@ class App extends React.Component {
     try {
       this.setState({ userLoading: true });
       const currentUser = await getCurrentUser(localStorage.getItem("token"));
-      this.props.setUser(currentUser);
+      this.props.setCurrentUser(currentUser);
     } catch {
       console.log("COULD NOT SET USER");
     }
@@ -28,7 +28,7 @@ class App extends React.Component {
     if (this.state.userLoading) {
       return <p>User loading ...</p>;
     }
-    if (!this.props.user) {
+    if (!this.props.currentUser) {
       return (
         <Router>
           <Switch>
@@ -55,7 +55,7 @@ const mapStateToProps = state => {
 };
 
 const mapActionsToProps = {
-  setUser: setUser
+  setCurrentUser: setCurrentUser
 };
 
 export default connect(

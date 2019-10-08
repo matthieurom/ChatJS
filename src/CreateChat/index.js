@@ -39,6 +39,7 @@ class CreateChat extends React.Component {
               placeholder="Name"
               value={this.state.inputNameValue}
               onChange={e => this.setState({ inputNameValue: e.target.value })}
+              maxlength={25}
             />
             <input
               placeholder="Description"
@@ -46,6 +47,7 @@ class CreateChat extends React.Component {
               onChange={e =>
                 this.setState({ inputDescriptionValue: e.target.value })
               }
+              maxlength={120}
             />
             <div className="createchat-button">
               <Link to="/">Back to home page</Link>

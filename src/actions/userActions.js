@@ -1,6 +1,12 @@
-export function setUser(user) {
+export function setCurrentUser(user) {
   return {
-    type: "SET_USER",
+    type: "SET_CURRENTUSER",
     payload: user
+  };
+}
+export function setUsers(users) {
+  return {
+    type: "SET_USERS",
+    payload: users
   };
 }

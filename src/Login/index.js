@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import axios from "axios";
 import { getCurrentUser } from "../services/getCurrentUser";
-import { setUser } from "../actions/userActions";
+import { setCurrentUser } from "../actions/userActions";
 import { connect } from "react-redux";
 
 class Login extends React.Component {
@@ -25,7 +25,7 @@ class Login extends React.Component {
       localStorage.setItem("token", response.data);
       // Store current user in Redux store
       const currentUser = await getCurrentUser(response.data);
-      this.props.setUser(currentUser);
+      this.props.setCurrentUser(currentUser);
       // Redirection towards home page
       this.props.history.push("/");
     } catch {
@@ -87,7 +87,7 @@ class Login extends React.Component {
   }
 }
 const mapActionsToProps = {
-  setUser: setUser
+  setCurrentUser: setCurrentUser
 };
 const mapStateToProps = state => {
   return state;
