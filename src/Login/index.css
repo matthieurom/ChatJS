@@ -13,7 +13,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 10px -6px rgba(0, 0, 0, 0.66);
+  box-shadow: 0px 0px 20px -6px rgba(0, 0, 0, 0.66);
+  background-color: white;
 }
 .form-content form {
   padding: 15px;
@@ -30,12 +31,14 @@
   margin-bottom: 0px;
 }
 .form-content form input {
-  width: 300px;
-  height: 25px;
-  margin: 20px 0px 15px 0px;
-  border: 0.8px solid #bcbcbc;
+  width: 320px;
+  height: 50px;
+  margin: 10px 0px 10px 0px;
+  border: 0.5px solid #bcbcbc;
   border-radius: 5px;
-  padding: 3px;
+  padding: 5px;
+  font-size: 1em;
+  background-color: #f1f0f5;
 }
 .form-content form input:focus {
   outline: none;
@@ -45,23 +48,33 @@
 .form-content-button {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .form-content-button button {
-  width: 80px;
+  width: 200px;
 }
-.form-content-button a {
+.login-signupButton a {
   text-decoration: none;
-  font-size: 0.9em;
+  font-size: 1em;
   color: #383649;
 }
-.form-content-button a:hover {
+.login-signupButton a:hover {
   opacity: 0.6;
 }
 .incorrect-password {
   color: red;
   font-size: 0.8em;
   font-weight: bold;
+}
+.login-signupButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background-color: #f1f0f5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

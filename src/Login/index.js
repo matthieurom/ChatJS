@@ -75,12 +75,14 @@ class Login extends React.Component {
               ""
             )}
             <div className="form-content-button">
-              <Link to="/register">
-                <p>Sign up</p>
-              </Link>
               <button type="submit">Login</button>
             </div>
           </form>
+          <div className="login-signupButton">
+            <Link to="/register">
+              <p>Sign up</p>
+            </Link>
+          </div>
         </div>
       </div>
     );
