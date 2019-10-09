@@ -140,22 +140,36 @@ button:hover {
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 }
 .MessageFromCurrentUserDisplay {
   justify-content: flex-end;
 }
-
+.MainMessageWrapper .MessageUserIcon {
+  border: 1px solid #181818;
+  height: 35px;
+  width: 35px;
+  border-radius: 20px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 0;
+}
+.MainMessageWrapper .MessageUserIcon svg {
+  font-size: 1.5em;
+}
 .MessageWrapper {
   background-color: white;
   margin: 20px 5px 20px 5px;
   padding: 10px;
   border-radius: 5px;
-  max-width: 90%;
+  max-width: 79%;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
 .MessageFromCurrentUser {
-  margin-left: 15%;
+  order: -1;
 }
 .MessageWrapper .header-message {
   display: flex;
