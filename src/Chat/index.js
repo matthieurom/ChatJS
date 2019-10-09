@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "./index.css";
 import { connect } from "react-redux";
 import io from "socket.io-client";
 import { setMessages } from "../actions/messageActions";
 import { getMessagesFromChat } from "../services/getMessagesFromChat";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import dateFormat from "dateformat";
 
 class Chat extends React.Component {
   state = {
@@ -58,11 +60,36 @@ class Chat extends React.Component {
 
   displayMessage = message => {
     let user = this.props.users.find(user => user._id === message.user);
+
     if (user) {
+      let isCurrentUser = user._id === this.props.currentUser._id;
       return (
-        <li key={message._id}>
-          {user.login} : {message.text}
-        </li>
+        <div
+          className={
+            isCurrentUser
+              ? "MainMessageWrapper MessageFromCurrentUserDisplay"
+              : "MainMessageWrapper"
+          }
+        >
+          <div className="MessageUserIcon">
+            <FontAwesomeIcon icon={faUser} />
+          </div>
+          <div
+            className={
+              isCurrentUser
+                ? "MessageWrapper MessageFromCurrentUser"
+                : "MessageWrapper"
+            }
+          >
+            <div className="header-message">
+              <span className="header-message-login">{user.login}</span>
+              <span className="header-message-date">
+                {dateFormat(message.date, "dS mmmm, h:MM TT")}
+              </span>
+            </div>
+            <div className="content-message">{message.text}</div>
+          </div>
+        </div>
       );
     }
   };
@@ -77,7 +104,7 @@ class Chat extends React.Component {
           <h1>Connected to {this.props.chat.name}</h1>
         </div>
         <div className="ChatContent">
-          <div className="ChatMessages">{messagesToDisplay}</div>
+          <div className="ChatMessagesText">{messagesToDisplay}</div>
           <form onSubmit={e => this.handleSubmitMessage(e)}>
             <input
               placeholder="Write down your message"

@@ -40,7 +40,8 @@ button:hover {
   font-weight: bold;
 }
 .ChatMainMessages {
-  width: 100%;
+  max-width: 620px;
+  width: auto;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -105,7 +106,7 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
 }
-.ChatMainMessages .ChatMessages {
+.ChatMainMessages .ChatMessagesText {
   overflow-y: scroll;
   padding: 5px 10px 5px 10px;
 }
@@ -132,4 +133,42 @@ button:hover {
 .ChatMainMessages .back {
   align-self: center;
   margin-top: 30px;
+}
+
+/* MESSAGE */
+.MainMessageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.MessageFromCurrentUserDisplay {
+  justify-content: flex-end;
+}
+
+.MessageWrapper {
+  background-color: white;
+  margin: 20px 5px 20px 5px;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 90%;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.MessageFromCurrentUser {
+  margin-left: 15%;
+}
+.MessageWrapper .header-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #a8a8a8;
+  font-size: 0.8em;
+}
+.MessageWrapper .header-message .header-message-login {
+  margin-right: 20px;
+}
+.MessageWrapper .content-message {
+  font-size: 0.9em;
+  padding-top: 10px;
+  word-wrap: break-word;
 }
