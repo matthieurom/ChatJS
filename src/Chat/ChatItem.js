@@ -4,6 +4,7 @@ import "./index.css";
 import { connect } from "react-redux";
 import { setChat } from "../actions/chatActions";
 import { setMessages } from "../actions/messageActions";
+import { setLastChats } from "../actions/chatActions";
 import { getMessagesFromChat } from "../services/getMessagesFromChat";
 import { setUsers } from "../actions/userActions";
 
@@ -24,6 +25,7 @@ class ChatItem extends React.Component {
     let messagesFromChat = await getMessagesFromChat(chat._id);
     this.props.setMessages(messagesFromChat);
     this.getUsersFromMessages(this.props.messages);
+    window.scrollTo(0, 630);
   };
 
   getUsersFromMessages = messages => {
@@ -64,7 +66,10 @@ class ChatItem extends React.Component {
     );
   };
   render() {
-    let chatItems = this.state.chats.map(this.listChat);
+    let chatItems;
+    if (this.state.chats) {
+      chatItems = this.state.chats.map(this.listChat);
+    }
     return (
       <ul>
         <div className="ChatItem">{chatItems}</div>
@@ -79,7 +84,8 @@ const mapStateToProps = state => {
 const mapActionsToProps = {
   setChat: setChat,
   setMessages: setMessages,
-  setUsers: setUsers
+  setUsers: setUsers,
+  setLastChats: setLastChats
 };
 
 export default connect(

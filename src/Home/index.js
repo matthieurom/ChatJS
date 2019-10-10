@@ -6,12 +6,28 @@ import { connect } from "react-redux";
 import Chat from "../Chat/index";
 
 class Home extends React.Component {
+  componentWillMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
+  }
+  handleLogout = () => {
+    console.log("LOGOUT");
+    localStorage.removeItem("token");
+    this.props.history.push("/login");
+  };
   render() {
     return (
       <div className="HomeMain">
         <div className="ChatWrapper">
-          <div className="ListChat">
-            <div className="header-listChat">
+          <div className={this.props.isMenuOpen ? "ListChat open" : "ListChat"}>
+            <div
+              className={
+                this.props.isMenuOpen
+                  ? "header-listChat open-header"
+                  : "header-listChat"
+              }
+            >
               <h1>Welcome {this.props.currentUser.login}</h1>
               <h2>Pick a chat and start a conversation !</h2>
             </div>
@@ -22,9 +38,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="HomeButtons">
-          <Link to="/login">
-            <button>Logout</button>
-          </Link>
+          <button onClick={this.handleLogout}>Logout</button>
           <Link to="/create">
             <button className="HomeButtonCreate">Create a new chat</button>
           </Link>

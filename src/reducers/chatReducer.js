@@ -2,7 +2,9 @@ var initialState = {
   currentUser: [],
   chat: [],
   messages: [],
-  users: []
+  users: [],
+  lastChats: [],
+  isMenuOpen: true
 };
 
 export default function chatReducer(state = initialState, action) {
@@ -15,6 +17,10 @@ export default function chatReducer(state = initialState, action) {
       return { ...state, messages: action.payload };
     case "SET_USERS":
       return { ...state, users: action.payload };
+    case "SET_LAST_CHATS":
+      return { ...state, lastChats: action.payload };
+    case "SET_MENU_LIST_CHATS":
+      return { ...state, isMenuOpen: action.payload };
     default:
       return state;
   }

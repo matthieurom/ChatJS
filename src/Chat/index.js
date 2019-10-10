@@ -4,9 +4,14 @@ import "./index.css";
 import { connect } from "react-redux";
 import io from "socket.io-client";
 import { setMessages } from "../actions/messageActions";
+import { setChat, setMenuListChats } from "../actions/chatActions";
 import { getMessagesFromChat } from "../services/getMessagesFromChat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faSignOutAlt,
+  faBars
+} from "@fortawesome/free-solid-svg-icons";
 import dateFormat from "dateformat";
 
 class Chat extends React.Component {
@@ -57,7 +62,20 @@ class Chat extends React.Component {
       inputMessage: ""
     });
   };
+  handleDisconnectChat = () => {
+    this.props.setChat([]);
+    this.props.setMessages([]);
+    window.scrollTo(0, 0); // For phone users, scroll to the top when menu is clicked
+  };
 
+  handleMenu = () => {
+    if (this.props.isMenuOpen) {
+      this.props.setMenuListChats(false);
+    } else {
+      this.props.setMenuListChats(true);
+    }
+    window.scrollTo(0, 0); // For phone users, scroll to the top when menu is clicked
+  };
   displayMessage = message => {
     let user = this.props.users.find(user => user._id === message.user);
 
@@ -94,23 +112,47 @@ class Chat extends React.Component {
     }
   };
   render() {
+    console.log("in chat : ", this.props.isMenuOpen);
     let messagesToDisplay;
     if (this.props.users) {
       messagesToDisplay = this.props.messages.map(this.displayMessage);
     }
     return (
-      <div className="ChatMainMessages">
+      <div
+        className={
+          this.props.isMenuOpen
+            ? "ChatMainMessages openChat"
+            : "ChatMainMessages"
+        }
+      >
         <div className="ChatHeader">
-          <h1>Connected to {this.props.chat.name}</h1>
+          <div className="ChatHeader-tab" onClick={this.handleMenu}>
+            <FontAwesomeIcon icon={faBars} />
+          </div>
+          <h1>
+            {this.props.chat.name
+              ? `Connected to ${this.props.chat.name}`
+              : "Not connected"}
+          </h1>
+          <div
+            className="ChatHeader-logout"
+            onClick={this.handleDisconnectChat}
+          >
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </div>
         </div>
         <div className="ChatContent">
           <div className="ChatMessagesText">{messagesToDisplay}</div>
           <form onSubmit={e => this.handleSubmitMessage(e)}>
-            <input
-              placeholder="Write down your message"
-              value={this.state.inputMessage}
-              onChange={e => this.handleInputMessageChange(e)}
-            />
+            {this.props.chat.name ? (
+              <input
+                placeholder="Write down your message"
+                value={this.state.inputMessage}
+                onChange={e => this.handleInputMessageChange(e)}
+              />
+            ) : (
+              ""
+            )}
           </form>
         </div>
       </div>
@@ -122,7 +164,9 @@ const mapStateToProps = state => {
   return state;
 };
 const mapActionsToProps = {
-  setMessages: setMessages
+  setMessages: setMessages,
+  setChat: setChat,
+  setMenuListChats
 };
 export default connect(
   mapStateToProps,

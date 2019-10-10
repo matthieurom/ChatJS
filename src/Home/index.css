@@ -22,21 +22,49 @@ button {
   width: 120px;
 }
 .HomeMain {
-  margin-top: 5%;
+  margin-top: 2%;
   height: 680px;
 }
 .HomeMain .ChatWrapper {
   display: flex;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
+  min-width: 380px;
 }
 .HomeMain .ListChat {
-  height: 600px;
+  height: 630px;
   background-color: #3d3b50;
   color: #f1f0f5;
   flex: 1;
-  overflow-y: scroll;
+  max-width: 0px;
+  overflow: hidden;
+  color: #383649;
+  transition: max-width 0.3s ease-out, color 0.1s ease-out;
+}
+.ListChat.open {
+  display: block;
+  max-width: 800px;
+  color: #fcfdff;
 }
 .HomeMain .ChatFrame {
-  height: 600px;
-  flex: 1.5;
+  height: 630px;
+  flex: 1.6;
+}
+
+@media screen and (max-width: 1000px) {
+  .HomeMain .ChatWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+  }
+  .HomeMain .ListChat {
+    max-width: 450px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
+    margin-bottom: 30px;
+    color: #fcfdff;
+  }
+  .HomeMain .ChatFrame {
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
+  }
 }
