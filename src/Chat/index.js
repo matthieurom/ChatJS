@@ -15,6 +15,7 @@ import {
 import dateFormat from "dateformat";
 
 class Chat extends React.Component {
+  chatRef = React.createRef();
   state = {
     inputMessage: ""
   };
@@ -61,6 +62,16 @@ class Chat extends React.Component {
     this.setState({
       inputMessage: ""
     });
+    try {
+      this.socket.on("RECEIVE_MESSAGE", async () => {
+        let messagesFromChatWithSocket = await getMessagesFromChat(
+          this.props.chat._id
+        );
+        this.props.setMessages(messagesFromChatWithSocket);
+      });
+    } catch (e) {
+      console.log("ERROR IN TRY CATCH OF CHAT IS :", e);
+    }
   };
   handleDisconnectChat = () => {
     this.props.setChat([]);
@@ -76,19 +87,27 @@ class Chat extends React.Component {
     }
     window.scrollTo(0, 0); // For phone users, scroll to the top when menu is clicked
   };
+  scrollToTheBottom = () => {
+    const objDiv = document.getElementById("messageList");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  };
+  componentDidUpdate() {
+    this.scrollToTheBottom();
+  }
+
   displayMessage = message => {
     let user = this.props.users.find(user => user._id === message.user);
-
     if (user) {
       let isCurrentUser = user._id === this.props.currentUser._id;
+      let classNameMessage = "MainMessageWrapper ";
+      if (isCurrentUser) {
+        classNameMessage = classNameMessage + "MessageFromCurrentUserDisplay ";
+      }
+      if (this.props.isMenuOpen) {
+        classNameMessage = classNameMessage + "MainMessageWithMenuOpen ";
+      }
       return (
-        <div
-          className={
-            isCurrentUser
-              ? "MainMessageWrapper MessageFromCurrentUserDisplay"
-              : "MainMessageWrapper"
-          }
-        >
+        <div className={classNameMessage}>
           <div className="MessageUserIcon">
             <FontAwesomeIcon icon={faUser} />
           </div>
@@ -112,7 +131,6 @@ class Chat extends React.Component {
     }
   };
   render() {
-    console.log("in chat : ", this.props.isMenuOpen);
     let messagesToDisplay;
     if (this.props.users) {
       messagesToDisplay = this.props.messages.map(this.displayMessage);
@@ -142,7 +160,9 @@ class Chat extends React.Component {
           </div>
         </div>
         <div className="ChatContent">
-          <div className="ChatMessagesText">{messagesToDisplay}</div>
+          <div className="ChatMessagesText" id="messageList">
+            {messagesToDisplay}
+          </div>
           <form onSubmit={e => this.handleSubmitMessage(e)}>
             {this.props.chat.name ? (
               <input

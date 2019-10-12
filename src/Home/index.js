@@ -4,19 +4,27 @@ import ChatItem from "../Chat/ChatItem";
 import "./index.css";
 import { connect } from "react-redux";
 import Chat from "../Chat/index";
+import { setCurrentUser, setUsers } from "../actions/userActions";
+import { setChat } from "../actions/chatActions";
+import { setMessages } from "../actions/messageActions";
 
 class Home extends React.Component {
   componentWillMount() {
     if (!localStorage.getItem("token")) {
-      this.props.history.push("/");
+      this.props.history.push("/login");
     }
   }
   handleLogout = () => {
     console.log("LOGOUT");
     localStorage.removeItem("token");
     this.props.history.push("/login");
+    this.props.setCurrentUser([]);
+    this.props.setUsers([]);
+    this.props.setMessages([]);
+    this.props.setChat([]);
   };
   render() {
+    console.log("RENDER IN HOME");
     return (
       <div className="HomeMain">
         <div className="ChatWrapper">
@@ -52,4 +60,13 @@ const mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps)(Home);
+const mapActionsToProps = {
+  setCurrentUser: setCurrentUser,
+  setUsers: setUsers,
+  setChat: setChat,
+  setMessages: setMessages
+};
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Home);

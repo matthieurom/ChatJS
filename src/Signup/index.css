@@ -1,6 +1,6 @@
-.LoginMain {
+.signupMain {
   width: 100%;
-  margin-top: 15%;
+  margin-top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,37 +30,39 @@
   font-size: 1.5em;
   margin-bottom: 0px;
 }
-.LoginMain .form-content form input {
+.signupMain .form-content form input {
   width: 320px;
-  height: 50px;
+  height: 30px;
   margin: 10px 0px 10px 0px;
   border: 0.5px solid #bcbcbc;
-  border-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding: 5px;
   font-size: 1em;
   background-color: #f1f0f5;
 }
-.LoginMain .form-content form input:focus {
+.signupMain .form-content form input:focus {
   outline: none;
-  border: 1.5px solid #383649;
-  border-radius: 5px;
+  border: 1.2px solid #383649;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .form-content-button {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .form-content-button button {
   width: 200px;
 }
-.login-signupButton a {
+.signup-signupButton a {
   text-decoration: none;
   font-size: 1em;
   color: #383649;
 }
-.login-signupButton a:hover {
+.signup-signupButton a:hover {
   opacity: 0.6;
 }
 .incorrect-password {
@@ -68,7 +70,7 @@
   font-size: 0.8em;
   font-weight: bold;
 }
-.login-signupButton {
+.signup-signupButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,4 +79,24 @@
   background-color: #f1f0f5;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+.signupMain .icon-signup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signupMain .icon-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 35px;
+  background-color: #f1f0f5;
+  border: 0.5px solid #bcbcbc;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.signupMain svg {
+  font-size: 1.2em;
 }

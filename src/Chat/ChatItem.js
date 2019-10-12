@@ -55,7 +55,13 @@ class ChatItem extends React.Component {
   listChat = chat => {
     return (
       <li key={chat._id}>
-        <div className="listChatMain">
+        <div
+          className={
+            this.props.chat._id === chat._id
+              ? "listChatMain current-chat"
+              : "listChatMain"
+          }
+        >
           <div className="listChatName">{chat.name}</div>
           <div className="listChatDescription">{chat.description}</div>
         </div>
