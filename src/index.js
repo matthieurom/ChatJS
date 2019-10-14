@@ -1,4 +1,3 @@
-require("dotenv").config();
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -7,6 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import chatReducer from "./reducers/chatReducer";
+require("dotenv").config();
 
 const store = createStore(
   chatReducer,
