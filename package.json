@@ -9,6 +9,7 @@
     "autoscroll-react": "^3.2.0",
     "axios": "^0.19.0",
     "dateformat": "^3.0.3",
+    "dotenv": "^8.1.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-flip-move": "^3.0.3",

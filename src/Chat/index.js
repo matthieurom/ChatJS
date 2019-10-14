@@ -20,7 +20,7 @@ class Chat extends React.Component {
   };
   async componentWillMount() {
     try {
-      this.socket = io("localhost:8080");
+      this.socket = io(process.env.REACT_APP_API_URL);
       this.socket.on("RECEIVE_MESSAGE", async message => {
         console.log("RECEIVE MESSAGE IS :", message);
         await this.props.addMessage(message);
@@ -46,7 +46,7 @@ class Chat extends React.Component {
   handleSubmitMessage = async e => {
     e.preventDefault();
     await axios.post(
-      "http://localhost:8080/messages",
+      process.env.REACT_APP_API_URL + "/messages",
       {
         text: this.state.inputMessage,
         date: Date.now(),

@@ -17,7 +17,7 @@ class Login extends React.Component {
     e.preventDefault();
     var response = null;
     try {
-      response = await axios.post(`http://localhost:8080/login`, {
+      response = await axios.post(process.env.REACT_APP_API_URL + `/login`, {
         login: this.state.inputLoginValue,
         password: this.state.inputPasswordValue
       });

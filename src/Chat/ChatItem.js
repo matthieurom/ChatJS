@@ -14,7 +14,7 @@ class ChatItem extends React.Component {
     users: null
   };
   async componentWillMount() {
-    let chatReponse = await axios.get("http://localhost:8080/chat");
+    let chatReponse = await axios.get(process.env.REACT_APP_API_URL + "/chat");
     this.setState({
       chats: chatReponse.data
     });
@@ -31,7 +31,7 @@ class ChatItem extends React.Component {
   getUsersFromMessages = messages => {
     messages.map(async message => {
       const responseUser = await axios.get(
-        `http://localhost:8080/user/${message.user}`
+        process.env.REACT_APP_API_URL$ + message.user
       );
 
       if (

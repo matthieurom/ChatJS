@@ -14,7 +14,7 @@ class CreateChat extends React.Component {
     let response;
     try {
       response = await axios.post(
-        "http://localhost:8080/chat",
+        process.env.REACT_APP_API_URL + "/chat",
         {
           name: this.state.inputNameValue,
           description: this.state.inputDescriptionValue
