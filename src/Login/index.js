@@ -28,7 +28,7 @@ class Login extends React.Component {
       this.props.setCurrentUser(currentUser);
       // Redirection towards home page
       this.props.history.push("/");
-    } catch {
+    } catch (e) {
       this.setState({
         isPasswordIncorrect: true
       });
