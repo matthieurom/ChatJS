@@ -40,13 +40,13 @@ button {
   background-color: #3d3b50;
   color: #f1f0f5;
   width: 0;
-  overflow: hidden;
+  overflow-y: scroll;
   color: #383649;
   flex-shrink: 0;
   transition: width 0.2s ease-out, color 0.1s ease-out;
 }
 .ListChat.open {
-  width: 370px;
+  width: 375px;
   color: #fcfdff;
 }
 .HomeMain .ChatFrame {

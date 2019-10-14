@@ -76,11 +76,7 @@ class ChatItem extends React.Component {
     if (this.state.chats) {
       chatItems = this.state.chats.map(this.listChat);
     }
-    return (
-      <ul>
-        <div className="ChatItem">{chatItems}</div>
-      </ul>
-    );
+    return <div className="ChatItem">{chatItems}</div>;
   }
 }
 const mapStateToProps = state => {

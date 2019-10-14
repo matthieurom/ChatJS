@@ -8,6 +8,7 @@ var initialState = {
 };
 
 export default function chatReducer(state = initialState, action) {
+  let newMessages;
   switch (action.type) {
     case "SET_CHAT":
       return { ...state, chat: action.payload };
@@ -15,6 +16,9 @@ export default function chatReducer(state = initialState, action) {
       return { ...state, currentUser: action.payload };
     case "SET_MESSAGES":
       return { ...state, messages: action.payload };
+    case "ADD_MESSAGE":
+      newMessages = state.messages.concat(action.payload);
+      return { ...state, messages: newMessages };
     case "SET_USERS":
       return { ...state, users: action.payload };
     case "SET_LAST_CHATS":

@@ -3,9 +3,8 @@ import axios from "axios";
 import "./index.css";
 import { connect } from "react-redux";
 import io from "socket.io-client";
-import { setMessages } from "../actions/messageActions";
+import { setMessages, addMessage } from "../actions/messageActions";
 import { setChat, setMenuListChats } from "../actions/chatActions";
-import { getMessagesFromChat } from "../services/getMessagesFromChat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -20,18 +19,23 @@ class Chat extends React.Component {
     inputMessage: ""
   };
   async componentWillMount() {
-    console.log("IN CHAT, PROPS ARE :", this.props);
     try {
       this.socket = io("localhost:8080");
-      this.socket.on("RECEIVE_MESSAGE", async () => {
-        let messagesFromChatWithSocket = await getMessagesFromChat(
-          this.props.chat._id
-        );
-        this.props.setMessages(messagesFromChatWithSocket);
+      this.socket.on("RECEIVE_MESSAGE", async message => {
+        console.log("RECEIVE MESSAGE IS :", message);
+        await this.props.addMessage(message);
       });
     } catch (e) {
       console.log("ERROR IN TRY CATCH OF CHAT IS :", e);
     }
+  }
+
+  componentWillUnmount() {
+    this.socket.disconnect();
+  }
+
+  componentDidUpdate() {
+    this.scrollToTheBottom();
   }
 
   handleInputMessageChange = e => {
@@ -53,25 +57,10 @@ class Chat extends React.Component {
         headers: { Authorization: localStorage.getItem("token") }
       }
     );
-    this.socket.emit("SEND_MESSAGE", {
-      text: this.state.inputMessage,
-      date: Date.now(),
-      chatId: this.props.chat._id,
-      userId: this.props.currentUser._id
-    });
+
     this.setState({
       inputMessage: ""
     });
-    try {
-      this.socket.on("RECEIVE_MESSAGE", async () => {
-        let messagesFromChatWithSocket = await getMessagesFromChat(
-          this.props.chat._id
-        );
-        this.props.setMessages(messagesFromChatWithSocket);
-      });
-    } catch (e) {
-      console.log("ERROR IN TRY CATCH OF CHAT IS :", e);
-    }
   };
   handleDisconnectChat = () => {
     this.props.setChat([]);
@@ -91,9 +80,6 @@ class Chat extends React.Component {
     const objDiv = document.getElementById("messageList");
     objDiv.scrollTop = objDiv.scrollHeight;
   };
-  componentDidUpdate() {
-    this.scrollToTheBottom();
-  }
 
   displayMessage = message => {
     let user = this.props.users.find(user => user._id === message.user);
@@ -186,7 +172,8 @@ const mapStateToProps = state => {
 const mapActionsToProps = {
   setMessages: setMessages,
   setChat: setChat,
-  setMenuListChats
+  setMenuListChats,
+  addMessage: addMessage
 };
 export default connect(
   mapStateToProps,

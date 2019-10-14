@@ -54,7 +54,8 @@ button:hover {
   flex-grow: 1;
 }
 .ChatItem .listChatMain .listChatDescription {
-  max-width: 260px;
+  max-width: 250px;
+  padding-right: 5px;
   font-size: 0.7em;
   opacity: 0.4;
   overflow: hidden;
@@ -67,6 +68,7 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
+  max-height: 80px;
 }
 
 /* HEADER OF LIST CHAT */
