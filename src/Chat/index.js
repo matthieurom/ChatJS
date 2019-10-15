@@ -25,6 +25,14 @@ class Chat extends React.Component {
       this.socket.on("RECEIVE_MESSAGE", async message => {
         console.log("RECEIVE MESSAGE IS :", message);
         await this.props.addMessage(message);
+        const userFromMessageReceived = await axios.get(
+          `${process.env.REACT_APP_API_URL}/user/${message.user}`
+        );
+        this.props.addUser(userFromMessageReceived.data);
+        console.log(
+          "User from mesage received is :",
+          userFromMessageReceived.data
+        );
       });
     } catch (e) {
       console.log("ERROR IN TRY CATCH OF CHAT IS :", e);
