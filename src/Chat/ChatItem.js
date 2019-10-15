@@ -31,6 +31,7 @@ class ChatItem extends React.Component {
     this.props.setMessages(messagesFromChat);
     this.getUsersFromMessages(this.props.messages);
     console.log("users after setChat are ", this.state.users);
+    window.scrollTo(0, 1000);
   };
 
   getUsersFromMessages = messages => {

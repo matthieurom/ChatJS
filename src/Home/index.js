@@ -33,7 +33,7 @@ class Home extends React.Component {
     }
     return (
       <div className="HomeMain">
-        <div className="ChatWrapper">
+        <div className="ChatWrapper" id="ChatWrapperList">
           <div className={classNameListChat}>
             <div
               className={
