@@ -31,7 +31,7 @@ class ChatItem extends React.Component {
   getUsersFromMessages = messages => {
     messages.map(async message => {
       const responseUser = await axios.get(
-        process.env.REACT_APP_API_URL$ + message.user
+        `${process.env.REACT_APP_API_URL}/user/${message.user}`
       );
 
       if (
