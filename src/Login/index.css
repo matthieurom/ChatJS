@@ -22,6 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .form-content h1 {
   font-size: 1.3em;
@@ -31,7 +32,7 @@
   margin-bottom: 0px;
 }
 .LoginMain .form-content form input {
-  width: 320px;
+  width: 80%;
   height: 50px;
   margin: 10px 0px 10px 0px;
   border: 0.5px solid #bcbcbc;

@@ -47,3 +47,12 @@
 .CreateChatMain .createchat-button .submitbutton {
   width: 80px;
 }
+
+@media screen and (max-width: 1000px) {
+  .CreateChatMain {
+    width: 90%;
+  }
+  .CreateChatMain .createchat-content {
+    width: auto;
+  }
+}

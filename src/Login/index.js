@@ -54,13 +54,12 @@ class Login extends React.Component {
           <h1>Chat App</h1>
           <h2>Login</h2>
           <form onSubmit={e => this.handleLogin(e)}>
-            <label>
-              <input
-                placeholder="Login"
-                value={this.state.inputLoginValue}
-                onChange={e => this.handleLoginChange(e)}
-              />
-            </label>
+            <input
+              placeholder="Login"
+              value={this.state.inputLoginValue}
+              onChange={e => this.handleLoginChange(e)}
+            />
+
             <input
               placeholder="Password"
               type="password"

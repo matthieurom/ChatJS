@@ -57,6 +57,7 @@ button {
 @media screen and (max-width: 1000px) {
   .HomeMain .ChatFrame {
     width: 90%;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
   }
   .HomeMain .ChatWrapper {
     display: flex;
@@ -64,14 +65,12 @@ button {
     justify-content: center;
     align-items: center;
     box-shadow: none;
+    padding: 30px 0px 30px 0px;
   }
   .HomeMain .ListChat {
     max-width: 450px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
     margin-bottom: 30px;
     color: #fcfdff;
-  }
-  .HomeMain .ChatFrame {
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
   }
 }
