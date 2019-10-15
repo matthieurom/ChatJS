@@ -24,11 +24,17 @@ class Home extends React.Component {
     this.props.setChat([]);
   };
   render() {
-    console.log("RENDER IN HOME");
+    let classNameListChat = "ListChat";
+    if (this.props.isMenuOpen) {
+      classNameListChat = classNameListChat + " open";
+    }
+    if (this.props.isScrollable) {
+      classNameListChat = classNameListChat + " scrollable";
+    }
     return (
       <div className="HomeMain">
         <div className="ChatWrapper">
-          <div className={this.props.isMenuOpen ? "ListChat open" : "ListChat"}>
+          <div className={classNameListChat}>
             <div
               className={
                 this.props.isMenuOpen

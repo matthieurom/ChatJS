@@ -40,7 +40,7 @@ button {
   background-color: #3d3b50;
   color: #f1f0f5;
   width: 0;
-  overflow-y: scroll;
+  overflow-y: hidden;
   color: #383649;
   flex-shrink: 0;
   transition: width 0.2s ease-out, color 0.1s ease-out;
@@ -48,6 +48,9 @@ button {
 .ListChat.open {
   width: 375px;
   color: #fcfdff;
+}
+.ListChat.scrollable {
+  overflow-y: scroll;
 }
 .HomeMain .ChatFrame {
   width: 100%;

@@ -16,3 +16,9 @@ export function setMenuListChats(isOpen) {
     payload: isOpen
   };
 }
+export function setScrollChatMenu(isScrollable) {
+  return {
+    type: "SET_SCROLL_CHAT_MENU",
+    payload: isScrollable
+  };
+}

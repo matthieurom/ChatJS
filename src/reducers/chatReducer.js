@@ -4,7 +4,8 @@ var initialState = {
   messages: [],
   users: [],
   lastChats: [],
-  isMenuOpen: true
+  isMenuOpen: true,
+  isScrollable: false
 };
 
 export default function chatReducer(state = initialState, action) {
@@ -25,6 +26,8 @@ export default function chatReducer(state = initialState, action) {
       return { ...state, lastChats: action.payload };
     case "SET_MENU_LIST_CHATS":
       return { ...state, isMenuOpen: action.payload };
+    case "SET_SCROLL_CHAT_MENU":
+      return { ...state, isScrollable: action.payload };
     default:
       return state;
   }

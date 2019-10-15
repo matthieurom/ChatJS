@@ -4,7 +4,7 @@ import "./index.css";
 import { connect } from "react-redux";
 import { setChat } from "../actions/chatActions";
 import { setMessages } from "../actions/messageActions";
-import { setLastChats } from "../actions/chatActions";
+import { setLastChats, setScrollChatMenu } from "../actions/chatActions";
 import { getMessagesFromChat } from "../services/getMessagesFromChat";
 import { setUsers } from "../actions/userActions";
 
@@ -18,6 +18,11 @@ class ChatItem extends React.Component {
     this.setState({
       chats: chatReponse.data
     });
+    if (this.state.chats.length > 6) {
+      this.props.setScrollChatMenu(true);
+    } else {
+      this.props.setScrollChatMenu(false);
+    }
   }
 
   setChat = async chat => {
@@ -87,7 +92,8 @@ const mapActionsToProps = {
   setChat: setChat,
   setMessages: setMessages,
   setUsers: setUsers,
-  setLastChats: setLastChats
+  setLastChats: setLastChats,
+  setScrollChatMenu
 };
 
 export default connect(
