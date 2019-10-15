@@ -14,6 +14,7 @@ class ChatItem extends React.Component {
     users: null
   };
   async componentWillMount() {
+    console.log("COMPOENT CHAT ITEM WILL MOUNT");
     let chatReponse = await axios.get(process.env.REACT_APP_API_URL + "/chat");
     this.setState({
       chats: chatReponse.data
@@ -30,7 +31,6 @@ class ChatItem extends React.Component {
     let messagesFromChat = await getMessagesFromChat(chat._id);
     this.props.setMessages(messagesFromChat);
     this.getUsersFromMessages(this.props.messages);
-    console.log("users after setChat are ", this.state.users);
     window.scrollTo(0, 1000);
   };
 
@@ -78,6 +78,7 @@ class ChatItem extends React.Component {
     );
   };
   render() {
+    console.log("RENDER IN CHATITEM");
     let chatItems;
     if (this.state.chats) {
       chatItems = this.state.chats.map(this.listChat);
