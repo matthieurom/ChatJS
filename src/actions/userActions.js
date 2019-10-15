@@ -10,3 +10,9 @@ export function setUsers(users) {
     payload: users
   };
 }
+export function addUser(user) {
+  return {
+    type: "ADD_USER",
+    payload: user
+  };
+}

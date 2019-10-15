@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import io from "socket.io-client";
 import { setMessages, addMessage } from "../actions/messageActions";
 import { setChat, setMenuListChats } from "../actions/chatActions";
+import { addUser } from "../actions/userActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -57,7 +58,8 @@ class Chat extends React.Component {
         headers: { Authorization: localStorage.getItem("token") }
       }
     );
-
+    console.log("current user in submit message is :", this.props.currentUser);
+    this.props.addUser(this.props.currentUser);
     this.setState({
       inputMessage: ""
     });
@@ -173,7 +175,8 @@ const mapActionsToProps = {
   setMessages: setMessages,
   setChat: setChat,
   setMenuListChats,
-  addMessage: addMessage
+  addMessage: addMessage,
+  addUser: addUser
 };
 export default connect(
   mapStateToProps,
