@@ -1,6 +1,28 @@
 .HomeMain {
   width: 100%;
-  height: 800px;
+  height: 680px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  justify-content: center;
+}
+
+.HomeMain .HomeButtonLogout {
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+.HomeMain .HomeButtonLogout .content-logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.HomeMain .HomeButtonLogout svg {
+  font-size: 2em;
+  margin-left: 10px;
+}
+.HomeMain .HomeButtonLogout button {
+  width: 120px;
+  height: 40px;
 }
 
 .HomeMain h2 {
@@ -9,22 +31,15 @@
 button {
   font-weight: bold;
 }
-.HomeButtons {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 30px;
+.HomeButtonsLogout {
+  align-self: center;
 }
-.HomeButtons button {
+
+.HomeButtonCreate {
+  width: 100%;
   height: 50px;
-  width: 70px;
 }
-.HomeButtons .HomeButtonCreate {
-  width: 120px;
-}
-.HomeMain {
-  margin-top: 2%;
-  height: 680px;
-}
+
 .HomeMain .ChatWrapper {
   display: flex;
   flex-direction: row;
@@ -32,7 +47,6 @@ button {
   justify-content: stretch;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
   min-width: 380px;
-  overflow: hidden;
   width: 100%;
 }
 .HomeMain .ListChat {
@@ -40,26 +54,45 @@ button {
   background-color: #3d3b50;
   color: #f1f0f5;
   width: 0;
-  overflow-y: hidden;
   color: #383649;
   flex-shrink: 0;
   transition: width 0.2s ease-out, color 0.1s ease-out;
+  border-right: 3px solid #383649;
 }
+.HomeMain .listChat-content {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.listChat-content .listChat-content-chatitems {
+  overflow: hidden;
+}
+.listChat-content-chatitems.scrollable {
+  overflow-y: scroll;
+}
+
 .ListChat.open {
   width: 375px;
   color: #fcfdff;
 }
-.ListChat.scrollable {
-  overflow-y: scroll;
-}
+
 .HomeMain .ChatFrame {
   width: 100%;
   height: 630px;
 }
 
 @media screen and (max-width: 1000px) {
+  .HomeMain {
+    height: auto;
+    margin-top: 0;
+  }
+  .HomeMain .HomeButtonLogout {
+    margin-bottom: 0;
+  }
   .HomeMain .ChatFrame {
     width: 90%;
+    max-width: 650px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.6);
   }
   .HomeMain .ChatWrapper {

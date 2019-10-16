@@ -98,7 +98,13 @@ button:hover {
   padding: 15px;
   font-weight: bold;
 }
-/* HEADER OF CHAT FRAM */
+
+/* FOOTER  CHATLIST */
+.create-chat {
+  height: 50px;
+  width: 100%;
+}
+/* HEADER OF CHAT FRAME */
 .ChatMainMessages .ChatHeader {
   background-color: #fcfdff;
   height: 10%;

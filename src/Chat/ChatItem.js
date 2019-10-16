@@ -19,7 +19,7 @@ class ChatItem extends React.Component {
     this.setState({
       chats: chatReponse.data
     });
-    if (this.state.chats.length > 6) {
+    if (this.state.chats.length > 5) {
       this.props.setScrollChatMenu(true);
     } else {
       this.props.setScrollChatMenu(false);
