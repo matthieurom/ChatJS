@@ -10,7 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
   faSignOutAlt,
-  faBars
+  faBars,
+  faPaperPlane
 } from "@fortawesome/free-solid-svg-icons";
 import dateFormat from "dateformat";
 
@@ -161,11 +162,16 @@ class Chat extends React.Component {
           </div>
           <form onSubmit={e => this.handleSubmitMessage(e)}>
             {this.props.chat.name ? (
-              <input
-                placeholder="Write down your message"
-                value={this.state.inputMessage}
-                onChange={e => this.handleInputMessageChange(e)}
-              />
+              <div className="input-content">
+                <input
+                  placeholder="Write down your message"
+                  value={this.state.inputMessage}
+                  onChange={e => this.handleInputMessageChange(e)}
+                />
+                <button type="submit">
+                  <FontAwesomeIcon icon={faPaperPlane} />
+                </button>
+              </div>
             ) : (
               ""
             )}

@@ -149,11 +149,34 @@ button:hover {
 }
 .ChatMainMessages form input {
   flex-grow: 1;
-  margin: 0px 15px 15px 15px;
   height: 30px;
+  margin-right: 0px;
   box-shadow: 0px 0px 15px -6px rgba(0, 0, 0, 0.66);
   border: 1px solid #cececf;
   padding: 5px 10px 5px 10px;
+}
+.ChatMainMessages form .input-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 15px 15px 15px;
+}
+.ChatMainMessages form .input-content button {
+  height: 42px;
+  width: 42px;
+  padding: 0px;
+  border-radius: 0px;
+  background-color: white;
+  border: 1px solid #cececf;
+  box-shadow: 5px 0px 15px -6px rgba(0, 0, 0, 0.66);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ChatMainMessages form .input-content button svg {
+  font-size: 1.5em;
+  color: #3d3b50;
 }
 .ChatMainMessages form input:focus {
   outline: none;
